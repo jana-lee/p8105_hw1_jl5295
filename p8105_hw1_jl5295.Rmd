@@ -1,5 +1,5 @@
 ---
-title: "HW1 JL5295"
+title: "Homework 1 JL5295"
 author: "Jana Lee"
 date: "9/17/2019"
 output: html_document
@@ -15,5 +15,41 @@ problem1_df = tibble(
   factor_vector = c("red", "yellow", "blue", "red", "yellow", "blue","red", "red")
 )
 ```
+
+# Finding the mean for each variable. 
+For sample variable:
+```{r}
+mean_sample = mean(pull(problem1_df, sample))
+```
+Mean of sample is -0.2224873.
+
+For logical_vector:
+```{r}
+mean_logical_vector = mean(pull(problem1_df, logical_vector))
+```
+Mean of logical_vector is 0.5.
+
+For char_vector:
+```{r}
+mean_char_vector = mean(pull(problem1_df, char_vector))
+```
+Mean of char_vector generated a warning message that says: In mean.default(pull(problem1_df, char_vector)) :
+ argument is not numeric or logical: returning NA.
+ 
+For factor_vector:
+```{r}
+mean_factor_vector = mean(pull(problem1_df, factor_vector))
+```
+Mean of factor_vector generated a warning message that says: In mean.default(pull(problem1_df, char_vector)) :
+ argument is not numeric or logical: returning NA.
+ 
+ 
+
+
+
+
+
+
+
 
 
