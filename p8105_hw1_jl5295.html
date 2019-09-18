@@ -383,26 +383,37 @@ summary {
   sample=rnorm(8),
   logical_vector = sample &gt; 0,
   char_vector = c(&quot;Help&quot;, &quot;am&quot;, &quot;I&quot;, &quot;doing&quot;, &quot;this&quot;, &quot;correctly&quot;, &quot;ahh&quot;, &quot;ahh&quot;),
-  factor_vector = c(&quot;red&quot;, &quot;yellow&quot;, &quot;blue&quot;, &quot;red&quot;, &quot;yellow&quot;, &quot;blue&quot;,&quot;red&quot;, &quot;red&quot;)
-)</code></pre>
-<div id="finding-the-mean-for-each-variable." class="section level1">
-<h1>Finding the mean for each variable.</h1>
-<p>For sample variable:</p>
-<pre class="r"><code>mean_sample = mean(pull(problem1_df, sample))</code></pre>
-<p>Mean of sample is -0.2224873.</p>
-<p>For logical_vector:</p>
-<pre class="r"><code>mean_logical_vector = mean(pull(problem1_df, logical_vector))</code></pre>
-<p>Mean of logical_vector is 0.5.</p>
-<p>For char_vector:</p>
-<pre class="r"><code>mean_char_vector = mean(pull(problem1_df, char_vector))</code></pre>
+  factor_vector = factor(c(&quot;red&quot;, &quot;yellow&quot;, &quot;blue&quot;, &quot;red&quot;, &quot;yellow&quot;, &quot;blue&quot;,&quot;red&quot;, &quot;red&quot;))
+)
+
+mean_sample = mean(pull(problem1_df, sample))
+  # Mean of sample is -0.2224873.
+
+mean_logical_vector = mean(pull(problem1_df, logical_vector))
+  # Mean of logical_vector is 0.5.
+
+mean_char_vector = mean(pull(problem1_df, char_vector))</code></pre>
 <pre><code>## Warning in mean.default(pull(problem1_df, char_vector)): argument is not
 ## numeric or logical: returning NA</code></pre>
-<p>Mean of char_vector generated a warning message that says: In mean.default(pull(problem1_df, char_vector)) : argument is not numeric or logical: returning NA.</p>
-<p>For factor_vector:</p>
-<pre class="r"><code>mean_factor_vector = mean(pull(problem1_df, factor_vector))</code></pre>
+<pre class="r"><code>  # Mean of char_vector generated a warning message that says: In    mean.default(pull(problem1_df, char_vector)) :argument is not      numeric or logical: returning NA.
+
+mean_factor_vector = mean(pull(problem1_df, factor_vector))</code></pre>
 <pre><code>## Warning in mean.default(pull(problem1_df, factor_vector)): argument is not
 ## numeric or logical: returning NA</code></pre>
-<p>Mean of factor_vector generated a warning message that says: In mean.default(pull(problem1_df, char_vector)) : argument is not numeric or logical: returning NA.</p>
+<pre class="r"><code>  # Mean of factor_vector generated a warning message that says: In mean.default(pull(problem1_df, char_vector)) : argument is not numeric or logical: returning NA.</code></pre>
+<div id="second-code-chunk-with-as.numeric-function." class="section level2">
+<h2>Second code chunk, with as.numeric function.</h2>
+<pre class="r"><code>as.numeric (pull(problem1_df, sample))</code></pre>
+<pre><code>## [1]  1.88494533 -1.09462766  0.42104644 -0.55296199  1.52843139 -0.27534059
+## [7] -0.78855931  0.03020143</code></pre>
+<pre class="r"><code>as.numeric (pull(problem1_df, logical_vector))</code></pre>
+<pre><code>## [1] 1 0 1 0 1 0 0 1</code></pre>
+<pre class="r"><code>as.numeric (pull(problem1_df, char_vector))</code></pre>
+<pre><code>## Warning: NAs introduced by coercion</code></pre>
+<pre><code>## [1] NA NA NA NA NA NA NA NA</code></pre>
+<pre class="r"><code>as.numeric (pull(problem1_df, factor_vector))</code></pre>
+<pre><code>## [1] 2 3 1 2 3 1 2 2</code></pre>
+<pre class="r"><code># Warning message generated for char_vector and factor_vector.</code></pre>
 </div>
 
 

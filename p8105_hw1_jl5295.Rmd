@@ -12,38 +12,36 @@ problem1_df = tibble(
   sample=rnorm(8),
   logical_vector = sample > 0,
   char_vector = c("Help", "am", "I", "doing", "this", "correctly", "ahh", "ahh"),
-  factor_vector = c("red", "yellow", "blue", "red", "yellow", "blue","red", "red")
+  factor_vector = factor(c("red", "yellow", "blue", "red", "yellow", "blue","red", "red"))
 )
-```
 
-# Finding the mean for each variable. 
-For sample variable:
-```{r}
 mean_sample = mean(pull(problem1_df, sample))
-```
-Mean of sample is -0.2224873.
+  # Mean of sample is -0.2224873.
 
-For logical_vector:
-```{r}
 mean_logical_vector = mean(pull(problem1_df, logical_vector))
-```
-Mean of logical_vector is 0.5.
+  # Mean of logical_vector is 0.5.
 
-For char_vector:
-```{r}
 mean_char_vector = mean(pull(problem1_df, char_vector))
-```
-Mean of char_vector generated a warning message that says: In mean.default(pull(problem1_df, char_vector)) :
- argument is not numeric or logical: returning NA.
- 
-For factor_vector:
-```{r}
+  # Mean of char_vector generated a warning message that says: In    mean.default(pull(problem1_df, char_vector)) :argument is not      numeric or logical: returning NA.
+
 mean_factor_vector = mean(pull(problem1_df, factor_vector))
+  # Mean of factor_vector generated a warning message that says: In mean.default(pull(problem1_df, char_vector)) : argument is not numeric or logical: returning NA.
+
 ```
-Mean of factor_vector generated a warning message that says: In mean.default(pull(problem1_df, char_vector)) :
- argument is not numeric or logical: returning NA.
- 
- 
+
+## Second code chunk, with as.numeric function.
+```{r, eval = FALSE}
+# Convert the logical vector to numeric and multiply the random sample by the result.
+as.numeric (pull(problem1_df, logical_vector))*(pull(problem1_df, sample))
+
+# Convert the logical vector to a factor and multiply the random sample by the result.
+as.factor (pull(problem1_df, logical_vector))*(pull(problem1_df, sample))
+
+# Convert the logical vector to factor and then convert the result to nnumeric and then multiply the random sample by the result.
+as.numeric (as.factor (pull(problem1_df, logical_vector)))*(pull(problem1_df, sample))
+
+```
+
 
 
 
