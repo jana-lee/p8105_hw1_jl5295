@@ -5,6 +5,15 @@ date: "9/17/2019"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+Problem 1
+```{r, creating_a_dataframe}
+library (tidyverse)
+problem1_df = tibble(
+  sample=rnorm(8),
+  logical_vector = sample > 0,
+  char_vector = c("Help", "am", "I", "doing", "this", "correctly", "ahh", "ahh"),
+  factor_vector = c("red", "yellow", "blue", "red", "yellow", "blue","red", "red")
+)
 ```
+
+
