@@ -1,10 +1,10 @@
 ---
-title: "Homework 1 JL5295"
+title: "p8105_hw1_JL5295"
 author: "Jana Lee"
 date: "9/17/2019"
 output: github_document
 ---
-**Problem 1**
+# **Problem 1**
 ```{r, first_df}
 library (tidyverse)
 problem1_df = tibble(
@@ -13,23 +13,22 @@ problem1_df = tibble(
   char_vector = c("Help", "am", "I", "doing", "this", "correctly", "ahh", "ahh"),
   factor_vector = factor(c("red", "yellow", "blue", "red", "yellow", "blue","red", "red"))
 )
-# Problem 1 asks us to take a deep dive into creating a dataframe. 
-# problem1_df was created and allows us to explore different types of vectors.
 
 mean_sample = mean(pull(problem1_df, sample))
-  # Mean of sample is -0.2224873.
 
 mean_logical_vector = mean(pull(problem1_df, logical_vector))
-  # Mean of logical_vector is 0.5.
 
 mean_char_vector = mean(pull(problem1_df, char_vector))
-mean_factor_vector = mean(pull(problem1_df, factor_vector))
-  # Both the mean of char_vector and factor_vector generated a warning message. 
-  # This does explain what is happening when we try to take the mean because 
-  # char_vector and factor_vector are not logical or numerical vectors.
-```
 
-Second code chunk, with as.numeric function.
+mean_factor_vector = mean(pull(problem1_df, factor_vector))
+
+```
+**Problem 1 Comment** Problem 1 asks us to take a deep dive into creating a dataframe. problem1_df was created and allows us to explore different types of vectors.
+
+Then, we took the mean. The mean of sample is -0.2224873. Mean of logical_vector is 0.5. Both the mean of char_vector and factor_vector generated a warning message. This does explain what is happening when we try to take the mean because char_vector and factor_vector are not logical or numerical vectors.
+
+
+## Second code chunk, with as.numeric function
 ```{r, as_numeric function, eval = FALSE}
 # Convert the logical vector to numeric and multiply the random sample by 
 # the result.
@@ -45,7 +44,7 @@ as.numeric (as.factor (pull(problem1_df, logical_vector)))*(pull(problem1_df, sa
 
 ```
 
-**Problem 2**
+# **Problem 2**
 ```{r, second_df}
 problem2_df = tibble(
   x = rnorm (500),
@@ -55,24 +54,25 @@ problem2_df = tibble(
   factor_vector = as.factor (logical_vector),
 )
 ```
+
 The dataset has `r nrow(problem2_df)` rows and `r ncol(problem2_df)` columns.
 The mean of x is `r mean(pull(problem2_df, x))`.
 The median of x is `r median(pull(problem2_df, x))`.
 The standard deviation of x is `r sd(pull(problem2_df, x))`.
 The proportion of cases for which x + y > 1 is `r mean(pull(problem2_df, logical_vector))`.
 
-Scatterplot of y vs. x
+## Scatterplots
 ```{r, scatterplots}
 plota = ggplot(problem2_df, aes(x, y, color = logical_vector)) + geom_point()
-  # There are two colors for the logical_vector scatterplot, one red and one green.
+plota
 
 plotb = ggplot(problem2_df, aes(x, y, color = numeric_vector)) + geom_point()
-  # There is a gradient of sky blue to dark blue for the numeric_vector scatterplot.
+plotb
 
 plotc= ggplot(problem2_df, aes(x, y, color = factor_vector)) + geom_point()
-  # There are two colors for the factor_vector, one red and one green.
+plotc
 
 ggsave("plota.png", height = 4, width = 6)
-  # Saved plota as a PNG file. Confirmed it is in the File Directory.
-```
 
+```
+**Scatterplot comment:** There are two colors for the logical_vector scatterplot, one red and one green. There is a gradient of sky blue to dark blue for the numeric_vector scatterplot. There are two colors for the factor_vector, one red and one green. Saved plota as a PNG file. Confirmed it is in the File Directory.
