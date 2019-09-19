@@ -48,16 +48,20 @@ problem2_df = tibble(
   x = rnorm (500),
   y = rnorm (500),
   logical_vector = x + y > 1,
-  banana = as.numeric (logical_vector),
-  as.factor (logical_vector),
+  numeric_vector = as.numeric (logical_vector),
+  factor_vector = as.factor (logical_vector),
 )
 ```
-The dataset is `nrow(problem2_df)` and `ncol(problem2_df)`.
+The dataset has `r nrow(problem2_df)` rows and `r ncol(problem2_df)`columns.
+The mean of x is `r mean(pull(problem2_df, x))`.
+The median of x is `r median(pull(problem2_df, x))`.
+The standard deviation of x is `r sd(pull(problem2_df, x))`.
+The proportion of cases for which x + y > 1 is `r mean(pull(problem2_df, logical_vector))`.
 
-
-
-
-
-
-
+#Scatterplot of y vs. x
+```{r}
+ggplot(problem2_df, aes(x, y, color = logical_vector)) + geom_point()
+ggplot(problem2_df, aes(x, y, color = numeric_vector)) + geom_point()
+ggplot(problem2_df, aes(x, y, color = factor_vector)) + geom_point()
+```
 
