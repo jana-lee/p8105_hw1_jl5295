@@ -4,9 +4,8 @@ author: "Jana Lee"
 date: "9/17/2019"
 output: github_document
 ---
-
-Problem 1
-```{r, creating_a_dataframe}
+**Problem 1**
+```{r, first_df}
 library (tidyverse)
 problem1_df = tibble(
   sample=rnorm(8),
@@ -14,6 +13,8 @@ problem1_df = tibble(
   char_vector = c("Help", "am", "I", "doing", "this", "correctly", "ahh", "ahh"),
   factor_vector = factor(c("red", "yellow", "blue", "red", "yellow", "blue","red", "red"))
 )
+# Problem 1 asks us to take a deep dive into creating a dataframe. 
+# problem1_df was created and allows us to explore different types of vectors.
 
 mean_sample = mean(pull(problem1_df, sample))
   # Mean of sample is -0.2224873.
@@ -22,28 +23,30 @@ mean_logical_vector = mean(pull(problem1_df, logical_vector))
   # Mean of logical_vector is 0.5.
 
 mean_char_vector = mean(pull(problem1_df, char_vector))
-  # Mean of char_vector generated a warning message that says: In    mean.default(pull(problem1_df, char_vector)) :argument is not      numeric or logical: returning NA.
-
 mean_factor_vector = mean(pull(problem1_df, factor_vector))
-  # Mean of factor_vector generated a warning message that says: In mean.default(pull(problem1_df, char_vector)) : argument is not numeric or logical: returning NA.
-
+  # Both the mean of char_vector and factor_vector generated a warning message. 
+  # This does explain what is happening when we try to take the mean because 
+  # char_vector and factor_vector are not logical or numerical vectors.
 ```
 
-## Second code chunk, with as.numeric function.
-```{r, eval = FALSE}
-# Convert the logical vector to numeric and multiply the random sample by the result.
+Second code chunk, with as.numeric function.
+```{r, as_numeric function, eval = FALSE}
+# Convert the logical vector to numeric and multiply the random sample by 
+# the result.
 as.numeric (pull(problem1_df, logical_vector))*(pull(problem1_df, sample))
 
-# Convert the logical vector to a factor and multiply the random sample by the result.
+# Convert the logical vector to a factor and multiply the random sample by 
+# the result.
 as.factor (pull(problem1_df, logical_vector))*(pull(problem1_df, sample))
 
-# Convert the logical vector to factor and then convert the result to nnumeric and then multiply the random sample by the result.
+# Convert the logical vector to factor and then convert the result to nnumeric 
+# and then multiply the random sample by the result.
 as.numeric (as.factor (pull(problem1_df, logical_vector)))*(pull(problem1_df, sample))
 
 ```
 
-Problem 2
-```{r}
+**Problem 2**
+```{r, second_df}
 problem2_df = tibble(
   x = rnorm (500),
   y = rnorm (500),
@@ -52,16 +55,21 @@ problem2_df = tibble(
   factor_vector = as.factor (logical_vector),
 )
 ```
-The dataset has `r nrow(problem2_df)` rows and `r ncol(problem2_df)`columns.
+The dataset has `r nrow(problem2_df)` rows and `r ncol(problem2_df)` columns.
 The mean of x is `r mean(pull(problem2_df, x))`.
 The median of x is `r median(pull(problem2_df, x))`.
 The standard deviation of x is `r sd(pull(problem2_df, x))`.
 The proportion of cases for which x + y > 1 is `r mean(pull(problem2_df, logical_vector))`.
 
-#Scatterplot of y vs. x
-```{r}
+Scatterplot of y vs. x
+```{r, scatterplots}
 ggplot(problem2_df, aes(x, y, color = logical_vector)) + geom_point()
+  # There are two colors for the logical_vector scatterplot, one red and one green.
+
 ggplot(problem2_df, aes(x, y, color = numeric_vector)) + geom_point()
+  # There is a gradient of sky blue to dark blue for the numeric_vector scatterplot.
+
 ggplot(problem2_df, aes(x, y, color = factor_vector)) + geom_point()
+  # There are two colors for the factor_vector, one red and one green.
 ```
 
