@@ -79,7 +79,7 @@ plotb
 plotc= ggplot(problem2_df, aes(x, y, color = factor_vector)) + geom_point()
 plotc
 
-ggsave("plota.png", height = 4, width = 6)
+ggsave("plota.png",)
 
 ```
 **Scatterplot comment:** There are two colors for the logical_vector scatterplot, one red and one green. There is a gradient of sky blue to dark blue for the numeric_vector scatterplot. There are two colors for the factor_vector, one red and one green. Saved plota as a PNG file, and onfirmed it is in the File Directory.
