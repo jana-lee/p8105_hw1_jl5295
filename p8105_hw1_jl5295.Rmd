@@ -5,10 +5,11 @@ date: "9/17/2019"
 output: github_document
 ---
 # **Problem 1**
+## Making the First Data Frame
 ```{r, first_df}
-library (tidyverse)
-
 set.seed(10)
+
+library (tidyverse)
 
 problem1_df =tibble(
   sample=rnorm(8),
@@ -17,18 +18,18 @@ problem1_df =tibble(
   factor_vector = factor(c("red", "yellow", "blue", "red", "yellow", "blue","red", "red"))
 )
 
-mean_sample = mean(pull(problem1_df, sample))
+mean(pull(problem1_df, sample))
 
-mean_logical_vector = mean(pull(problem1_df, logical_vector))
+mean(pull(problem1_df, logical_vector))
 
-mean_char_vector = mean(pull(problem1_df, char_vector))
+mean(pull(problem1_df, char_vector))
 
-mean_factor_vector = mean(pull(problem1_df, factor_vector))
+mean(pull(problem1_df, factor_vector))
 
 ```
-**Problem 1 Comment** Problem 1 asks us to take a deep dive into creating a dataframe. problem1_df was created and allows us to explore different types of vectors. I set the seed here, so we can ensure reproducibility on this homework.
+**Problem 1 Comment** Problem 1 asks us to take a deep dive into creating a dataframe. problem1_df was created and allows us to explore different types of vectors. I set the seed here, so I can ensure reproducibility on this homework.
 
-Then, we took the mean. The mean of sample is -0.2224873. Mean of logical_vector is 0.5. Both the mean of char_vector and factor_vector generated a warning message. This does explain what is happening when we try to take the mean because char_vector and factor_vector are not logical or numerical vectors.
+Then, I took the mean. The mean of sample is -0.2224873. Mean of logical_vector is 0.5. Both the mean of char_vector and factor_vector generated a warning message. This does explain what is happening when I try to take the mean because char_vector and factor_vector are not logical or numerical vectors.
 
 
 ## Second code chunk, with as.numeric function
@@ -48,6 +49,7 @@ as.numeric (as.factor (pull(problem1_df, logical_vector)))*(pull(problem1_df, sa
 ```
 
 # **Problem 2**
+## Making a Second Data Frame
 ```{r, second_df}
 set.seed(10)
 
@@ -80,4 +82,4 @@ plotc
 ggsave("plota.png", height = 4, width = 6)
 
 ```
-**Scatterplot comment:** There are two colors for the logical_vector scatterplot, one red and one green. There is a gradient of sky blue to dark blue for the numeric_vector scatterplot. There are two colors for the factor_vector, one red and one green. Saved plota as a PNG file. Confirmed it is in the File Directory.
+**Scatterplot comment:** There are two colors for the logical_vector scatterplot, one red and one green. There is a gradient of sky blue to dark blue for the numeric_vector scatterplot. There are two colors for the factor_vector, one red and one green. Saved plota as a PNG file, and onfirmed it is in the File Directory.
