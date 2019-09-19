@@ -7,7 +7,10 @@ output: github_document
 # **Problem 1**
 ```{r, first_df}
 library (tidyverse)
-problem1_df = tibble(
+
+set.seed(10)
+
+problem1_df =tibble(
   sample=rnorm(8),
   logical_vector = sample > 0,
   char_vector = c("Help", "am", "I", "doing", "this", "correctly", "ahh", "ahh"),
@@ -23,13 +26,13 @@ mean_char_vector = mean(pull(problem1_df, char_vector))
 mean_factor_vector = mean(pull(problem1_df, factor_vector))
 
 ```
-**Problem 1 Comment** Problem 1 asks us to take a deep dive into creating a dataframe. problem1_df was created and allows us to explore different types of vectors.
+**Problem 1 Comment** Problem 1 asks us to take a deep dive into creating a dataframe. problem1_df was created and allows us to explore different types of vectors. I set the seed here, so we can ensure reproducibility on this homework.
 
 Then, we took the mean. The mean of sample is -0.2224873. Mean of logical_vector is 0.5. Both the mean of char_vector and factor_vector generated a warning message. This does explain what is happening when we try to take the mean because char_vector and factor_vector are not logical or numerical vectors.
 
 
 ## Second code chunk, with as.numeric function
-```{r, as_numeric function, eval = FALSE}
+```{r, as_numeric function, eval=FALSE}
 # Convert the logical vector to numeric and multiply the random sample by 
 # the result.
 as.numeric (pull(problem1_df, logical_vector))*(pull(problem1_df, sample))
@@ -46,6 +49,8 @@ as.numeric (as.factor (pull(problem1_df, logical_vector)))*(pull(problem1_df, sa
 
 # **Problem 2**
 ```{r, second_df}
+set.seed(10)
+
 problem2_df = tibble(
   x = rnorm (500),
   y = rnorm (500),
