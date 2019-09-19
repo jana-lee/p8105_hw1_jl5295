@@ -63,13 +63,16 @@ The proportion of cases for which x + y > 1 is `r mean(pull(problem2_df, logical
 
 Scatterplot of y vs. x
 ```{r, scatterplots}
-ggplot(problem2_df, aes(x, y, color = logical_vector)) + geom_point()
+plota = ggplot(problem2_df, aes(x, y, color = logical_vector)) + geom_point()
   # There are two colors for the logical_vector scatterplot, one red and one green.
 
-ggplot(problem2_df, aes(x, y, color = numeric_vector)) + geom_point()
+plotb = ggplot(problem2_df, aes(x, y, color = numeric_vector)) + geom_point()
   # There is a gradient of sky blue to dark blue for the numeric_vector scatterplot.
 
-ggplot(problem2_df, aes(x, y, color = factor_vector)) + geom_point()
+plotc= ggplot(problem2_df, aes(x, y, color = factor_vector)) + geom_point()
   # There are two colors for the factor_vector, one red and one green.
+
+ggsave("plota.png", height = 4, width = 6)
+  # Saved plota as a PNG file. Confirmed it is in the File Directory.
 ```
 
